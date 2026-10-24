@@ -1844,7 +1844,7 @@ class Game:
             for e in self.enemies_of(p.team):
                 d = math.hypot(e.x - p.x, e.y - p.y)
                 if d < 1.8 and abs(ang_diff(math.atan2(e.y - p.y, e.x - p.x), p.ang)) < 0.7:
-                    if d < bd:
+                    if d < bd and los(p.x, p.y, e.x, e.y):
                         best, bd = e, d
             if best is not None:
                 self.hurt_bot(best, w.dmg, p)
